@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <!--navigation bar-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-danger ">
+        <div class="collapse justify-content-md-center navbar-collapse" id="navbarNavAltMarkup">
+            <a class="navbar-brand" href="/">Layoff FYI</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/add">Contribute</a>
+                <a class="nav-item nav-link" href="/about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--site body content container-->
+    <div class = "container">
+        <!--row with site intro-->
+        <div class="row">
+            <div class="col p-4">
+                <h1 class="text-center">Find out what companies are laying off in Hong Kong<h1>
+                <br>
+                <h3 class="font-weight-normal">Layoff? Pay Cut? Hiring Freeze? Actively Hiring? Check out the latest employment status of companies and <a class = "text-danger" href="/add">share what you know</a>!</h3>
+                <br>
+                <p>Our site helps people to navigate the uncertainty in times of COVID-19 by provides a macro view of the employment opportunities from anonymously crowdsourced data.</p>
+            </div>
+        </div>
+
+        <!--company layoff status card grid-->
+        <div class="row">
+        <!--loop through the database rows. Show 4 cards per row for large screen, 2 for medium, and 1 for small-->
+        {% for row in rows %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card border-dark h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ row["company"] }}</h3>
+                        <br>
+
+                        <!--show layoff status with different text colors-->
+                        <h4 class="card-text text-weight-bold">
+                        {% if row["status"] == "Layoff" %}
+                            <span class="text-danger">Layoff</span>
+                        {% elif row["status"] == "Freeze" %}
+                            <span class="text-primary">Freeze</span>
+                        {% else %}
+                            <span class="text-success">Hiring</span>
+                        {% endif %}
+
+                        <!--check and display paycut status if true-->
+                        {% if row["paycut"] %}
+                            <span class="text-warning"> + Pay Cut</span>
+                        {% endif %}
+                        </h4>
+                        <br>
+
+                        <!--source info-->
+                        <p class="card-text">Source: {{ row["source"] }}</p>
+
+                        <!--show note popover button if note is not empty-->
+                        {% if row["note"]!="" %}
+                            <a tabindex="0" class="btn btn-sm btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Note" data-content="Note: {{ row["note"] }}">Note</a>
+                        {% endif %}
+
+                    </div>
+
+                    <!--card footer with date posted-->
+                    <div class="card-footer">
+                        <small class="text-muted">updated on {{ row["date"] }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+

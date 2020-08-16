@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <!--navigation bar-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-danger ">
+        <div class="collapse justify-content-md-center navbar-collapse" id="navbarNavAltMarkup">
+            <a class="navbar-brand" href="/">Layoff FYI</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/add">Contribute</a>
+                <a class="nav-item nav-link active" href="/about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--site body content container-->
+    <div class = "container">
+        <!--row with about page title-->
+        <div class = "row">
+            <div class = "col p-3">
+                <h1 class = "text-center">About Layoff HK</h1>
+            </div>
+        </div>
+
+        <!--row with about page text content-->
+        <div class = "row justify-content-center">
+            <div class = "col-lg-8 p-3">
+                <h4>What we do</h4>
+                <p>In the unprecedented time of COVID-19, Layoff FYI creates a channel for anonymously crowdsourced information on company’s hiring, pay cut, and layoff status in Hong Kong. The website aims to provide a macro view of the employment opportunities in Hong Kong.</p>
+                <br>
+                <h4>Disclaimer</h4>
+                <p>None of the contributors, administrators, or anyone else connected with Layoff FYI, in any way whatsoever, can be responsible for your use of the information contained in or linked from these web pages. Users should take all steps necessary to ascertain that information you receive from Layoff FYI is correct and has been verified. All information in this site is provided "as is", with no guarantee of completeness, accuracy, timeliness or of the results obtained from the use of this information.</p>
+                <br>
+                <h4>Contact</h4>
+                <p>For enquiries, please email us at: <span class = "font-weight-bold">info@layoffyi.com </span></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

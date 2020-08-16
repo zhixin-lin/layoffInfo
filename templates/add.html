@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <!--navigation bar-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-danger ">
+        <div class="collapse justify-content-md-center navbar-collapse" id="navbarNavAltMarkup">
+            <a class="navbar-brand" href="/">Layoff FYI</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/add">Contribute</a>
+                <a class="nav-item nav-link" href="/about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--site content container-->
+    <div class = "container">
+        <!--row with form title-->
+        <div class="row">
+            <div class="col p-4">
+                <h1 class = "text-center">Share what you know!<h1>
+            </div>
+        </div>
+
+        <!--row with form content-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 ">
+                <form action-"/add" method="post">
+
+                    <!--required company name-->
+                    <div class="form-group">
+                        <label for="companyInput">Company Name<span class = "text-danger text-weight-bold">*</span></label>
+                        <input type="text" class="form-control" name="company" required>
+                    </div>
+
+                    <!--required hiring status question-->
+                    <div class="form-group">
+                        <label for="statusInput">Hiring Status<span class = "text-danger text-weight-bold">*</span></label>
+                        <select class="form-control" name="status" required>
+                            <option></option>
+                            <option>Layoff</option>
+                            <option>Freeze</option>
+                            <option>Hiring</option>
+                        </select>
+                    </div>
+
+                    <!--required pay cut status question-->
+                    <div class="form-group">
+                        <label for="statusInput">Is the company cutting pay?<span class = "text-danger text-weight-bold">*</span></label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="paycut" value=1 required>Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="paycut" value=0 >No
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="paycut" value=0>I don't know
+                            </label>
+                        </div>
+                    </div>
+
+                    <!--required date info-->
+                    <div class="form-group">
+                        <label for="dateInput">Date<span class = "text-danger text-weight-bold">*</span></label>
+                        <input type="date" class="form-control" name="date" placeholder="dd/mm/yyyy" required>
+                    </div>
+
+                    <!--required source info-->
+                    <div class="form-group">
+                        <label for="sourceInput">How did your learn about this?<span class = "text-danger text-weight-bold">*</span></label>
+                        <select class="form-control" name="source" required>
+                            <option></option>
+                            <option value="directly from the company">from the company(e-mail, phone call, interview, website, etc.)</option>
+                            <option value="from third party website">from third party website</option>
+                            <option value="heard from other people">heard from other people</option>
+                            <option value="undisclosed">other source</option>
+                        </select>
+                    </div>
+
+                    <!--optional notes-->
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (optional)</label>
+                        <textarea class="form-control" name="note" rows="3" placeholder="e.g. percentage of pay cut, position and number of layoff, special info source, etc."></textarea>
+                    </div>
+
+                    <!--submit button-->
+                    <button type="submit" class="btn btn-primary">Share!</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
